@@ -19,6 +19,16 @@ namespace ClocknestGames.Library.Utils
 				else
 					GameObject.Destroy(go.transform.GetChild(i).gameObject);
 			}
+
+			/*
+            while (go.transform.childCount > 0)
+            {
+                if (immediate)
+                    GameObject.DestroyImmediate(go.transform.GetChild(0).gameObject);
+                else
+                    GameObject.Destroy(go.transform.GetChild(0).gameObject);
+            }
+            */
 		}
 
 		public static void RemoveAllPoolableChild(this GameObject go, bool immediate = false, bool removeNotPoolablesToo = true)
@@ -185,6 +195,13 @@ namespace ClocknestGames.Library.Utils
 			list[indexB] = tmp;
 		}
 
+		public static void Move<T>(this IList<T> list, T element, int index)
+		{
+			index = Math.Clamp(index, 0, list.Count - 1);
+			list.Remove(element);
+            list.Insert(index, element);
+		}
+
 		public static bool Swap<T>(this IList<T> list, T objA, T objB)
 		{
             int indexA = list.IndexOf(objA);
@@ -347,6 +364,16 @@ namespace ClocknestGames.Library.Utils
 		{
 			target.localScale = target.GetLocalScaleToSetLossyScale(lossyScale);
 		}
+
+        public static Vector3 SetXZ(this Vector3 target, float x, float z)
+        {
+            return new Vector3(x, target.y, z);
+        }
+
+        public static Vector3 SetXZ(this Vector3 target, Vector3 setWith)
+        {
+            return new Vector3(setWith.x, target.y, setWith.z);
+        }
 	}
 
     public static class Extensions

@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿// Extension of Corgi Engine's MMMaths. 
+// Credits to More Mountain.
+
+using UnityEngine;
 
 namespace ClocknestGames.Library.Utils
 {
 	/// <summary>
 	/// Math helpers
 	/// </summary>
+
 	public static class CGMaths
 	{
 		/// <summary>
